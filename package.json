@@ -1,0 +1,59 @@
+{
+  "name": "multi-agent-llm",
+  "version": "0.1.0",
+  "description": "Connect OpenRouter and run any terminal objective through routed AI agents.",
+  "type": "module",
+  "bin": {
+    "orchestra": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "docs",
+    "README.md",
+    "orchestra.config.example.json"
+  ],
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.build.json",
+    "dev": "tsx src/index.ts",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run src",
+    "openrouter:ping": "tsx src/scripts/openrouter-ping.ts",
+    "demo": "tsx src/scripts/demo.ts",
+    "demo:dashboard": "tsx src/scripts/dashboard-demo.ts"
+  },
+  "keywords": [
+    "llm",
+    "agents",
+    "orchestration",
+    "openrouter",
+    "cli",
+    "multi-agent",
+    "ai-agents"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@inquirer/prompts": "^7.2.1",
+    "axios": "^1.7.9",
+    "chalk": "^5.4.1",
+    "cli-table3": "^0.6.5",
+    "commander": "^12.1.0",
+    "cosmiconfig": "^9.0.0",
+    "ink": "^5.1.0",
+    "ora": "^8.1.1",
+    "p-queue": "^8.1.0",
+    "react": "^18.3.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^18.3.18",
+    "ink-testing-library": "^4.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^4.1.8"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

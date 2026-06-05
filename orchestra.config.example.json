@@ -1,0 +1,47 @@
+{
+  "openrouterApiKey": "env:OPENROUTER_API_KEY",
+  "orchestratorModel": "anthropic/claude-opus-4",
+  "classifierModel": "openai/gpt-4.1-mini",
+  "webResearchModel": "perplexity/sonar",
+  "agents": {
+    "researcher": {
+      "model": "perplexity/sonar",
+      "webModel": "perplexity/sonar",
+      "systemPrompt": "You are a researcher. Find reliable facts and highlight uncertainty.",
+      "tools": [
+        "web_scrape"
+      ]
+    },
+    "coder": {
+      "model": "anthropic/claude-sonnet-4",
+      "systemPrompt": "You are a coder. Produce practical implementation details and use local tools carefully.",
+      "tools": [
+        "read_file",
+        "write_file",
+        "list_dir",
+        "run_command"
+      ]
+    },
+    "analyst": {
+      "model": "openai/gpt-4.1",
+      "systemPrompt": "You are an analyst. Reason rigorously and return clear conclusions."
+    },
+    "writer": {
+      "model": "openai/gpt-4.1-mini",
+      "systemPrompt": "You are a writer. Synthesize agent outputs into concise prose."
+    },
+    "generalist": {
+      "model": "openai/gpt-4.1-mini",
+      "systemPrompt": "You are a general-purpose agent. Handle broad or ambiguous tasks when no specialist fits."
+    }
+  },
+  "tierThresholds": {
+    "tier1": 3,
+    "tier2": 6
+  },
+  "tierModels": {
+    "tier1": "openai/gpt-4.1-mini",
+    "tier2": "openai/gpt-4.1",
+    "tier3": "anthropic/claude-opus-4"
+  }
+}
