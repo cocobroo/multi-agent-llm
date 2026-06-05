@@ -56,7 +56,7 @@ export async function loadConfig(cwd: string = process.cwd()): Promise<Orchestra
 export function createDefaultConfig(env: NodeJS.ProcessEnv = process.env): OrchestraConfig {
   return {
     openrouterApiKey: env.OPENROUTER_API_KEY,
-    orchestratorModel: env.ORCHESTRA_ORCHESTRATOR_MODEL ?? "anthropic/claude-opus-4",
+    orchestratorModel: env.ORCHESTRA_ORCHESTRATOR_MODEL ?? "anthropic/claude-sonnet-4.6",
     classifierModel: env.ORCHESTRA_CLASSIFIER_MODEL ?? "openai/gpt-4.1-mini",
     webResearchModel: env.ORCHESTRA_WEB_RESEARCH_MODEL,
     agents: {
@@ -68,7 +68,7 @@ export function createDefaultConfig(env: NodeJS.ProcessEnv = process.env): Orche
         tools: ["web_scrape"],
       },
       coder: {
-        model: env.ORCHESTRA_CODER_MODEL ?? "anthropic/claude-sonnet-4",
+        model: env.ORCHESTRA_CODER_MODEL ?? "anthropic/claude-sonnet-4.6",
         systemPrompt:
           "You are the Coder agent. Produce practical implementation details and use local tools carefully.",
         tools: ["read_file", "write_file", "list_dir", "run_command"],
@@ -99,7 +99,7 @@ export function createDefaultConfig(env: NodeJS.ProcessEnv = process.env): Orche
       tier3:
         env.ORCHESTRA_TIER3_MODEL ??
         env.ORCHESTRA_ORCHESTRATOR_MODEL ??
-        "anthropic/claude-opus-4",
+        "anthropic/claude-sonnet-4.6",
     },
   };
 }
@@ -111,7 +111,7 @@ export function createConnectedConfig(
   return {
     ...createDefaultConfig({}),
     openrouterApiKey,
-    orchestratorModel: options.orchestratorModel ?? "anthropic/claude-opus-4",
+    orchestratorModel: options.orchestratorModel ?? "anthropic/claude-sonnet-4.6",
     classifierModel: options.classifierModel ?? "openai/gpt-4.1-mini",
     webResearchModel: options.webResearchModel ?? "perplexity/sonar",
   };

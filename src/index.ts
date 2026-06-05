@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { fileURLToPath } from "node:url";
+import { realpathSync } from "node:fs";
 import { access } from "node:fs/promises";
 import { join } from "node:path";
 import React from "react";
@@ -265,5 +266,23 @@ if (isCliEntrypoint()) {
 }
 
 function isCliEntrypoint(): boolean {
-  return process.argv[1] !== undefined && fileURLToPath(import.meta.url) === process.argv[1];
+  return isCliEntrypointPath(import.meta.url, process.argv[1]);
+}
+
+export function isCliEntrypointPath(moduleUrl: string, argvPath: string | undefined): boolean {
+  if (argvPath === undefined) {
+    return false;
+  }
+
+  try {
+    const modulePath = normalizeEntrypointPath(realpathSync(fileURLToPath(moduleUrl)));
+    const resolvedArgvPath = normalizeEntrypointPath(realpathSync(argvPath));
+    return modulePath === resolvedArgvPath;
+  } catch {
+    return false;
+  }
+}
+
+function normalizeEntrypointPath(path: string): string {
+  return process.platform === "win32" ? path.toLowerCase() : path;
 }

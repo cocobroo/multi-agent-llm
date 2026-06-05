@@ -57,14 +57,14 @@ events.emitTaskDone({
   model: "openai/gpt-4.1",
   output: "Architecture complete.",
 });
-events.emitTaskStart({ taskId: "implementation", agentRole: "coder", model: "anthropic/claude-sonnet-4" });
+events.emitTaskStart({ taskId: "implementation", agentRole: "coder", model: "anthropic/claude-sonnet-4.6" });
 events.emitCostUpdate({ totalTokens: 1289, totalCostUsd: 0.00143 });
 
 await pause(1100);
 events.emitTaskDone({
   taskId: "implementation",
   agentRole: "coder",
-  model: "anthropic/claude-sonnet-4",
+  model: "anthropic/claude-sonnet-4.6",
   output: "Implementation complete.",
 });
 events.emitTaskStart({ taskId: "release_notes", agentRole: "writer", model: "openai/gpt-4.1-mini" });

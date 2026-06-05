@@ -139,7 +139,7 @@ Example:
 ```json
 {
   "openrouterApiKey": "env:OPENROUTER_API_KEY",
-  "orchestratorModel": "anthropic/claude-opus-4",
+  "orchestratorModel": "anthropic/claude-sonnet-4.6",
   "classifierModel": "openai/gpt-4.1-mini",
   "webResearchModel": "perplexity/sonar",
   "agents": {
@@ -149,7 +149,7 @@ Example:
       "tools": ["web_scrape"]
     },
     "coder": {
-      "model": "anthropic/claude-sonnet-4",
+      "model": "anthropic/claude-sonnet-4.6",
       "tools": ["read_file", "write_file", "list_dir", "run_command"]
     },
     "analyst": { "model": "openai/gpt-4.1" },
@@ -160,7 +160,7 @@ Example:
   "tierModels": {
     "tier1": "openai/gpt-4.1-mini",
     "tier2": "openai/gpt-4.1",
-    "tier3": "anthropic/claude-opus-4"
+    "tier3": "anthropic/claude-sonnet-4.6"
   }
 }
 ```
@@ -196,7 +196,7 @@ node dist/index.js --once "Audit this repository and propose the next engineerin
 Override the orchestrator model for one run:
 
 ```bash
-node dist/index.js --model anthropic/claude-sonnet-4 --once "Draft a release plan."
+node dist/index.js --model anthropic/claude-sonnet-4.6 --once "Draft a release plan."
 ```
 
 Offline demo:

@@ -1,6 +1,6 @@
 {
   "openrouterApiKey": "env:OPENROUTER_API_KEY",
-  "orchestratorModel": "anthropic/claude-opus-4",
+  "orchestratorModel": "anthropic/claude-sonnet-4.6",
   "classifierModel": "openai/gpt-4.1-mini",
   "webResearchModel": "perplexity/sonar",
   "agents": {
@@ -13,7 +13,7 @@
       ]
     },
     "coder": {
-      "model": "anthropic/claude-sonnet-4",
+      "model": "anthropic/claude-sonnet-4.6",
       "systemPrompt": "You are a coder. Produce practical implementation details and use local tools carefully.",
       "tools": [
         "read_file",
@@ -42,6 +42,6 @@
   "tierModels": {
     "tier1": "openai/gpt-4.1-mini",
     "tier2": "openai/gpt-4.1",
-    "tier3": "anthropic/claude-opus-4"
+    "tier3": "anthropic/claude-sonnet-4.6"
   }
 }
